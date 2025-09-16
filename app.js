@@ -1,10 +1,15 @@
 require("dotenv").config();  // 👈 must be first
 const express = require("express");
+const app = express();
 const bodyParser = require("body-parser");
 const { GoogleGenerativeAI } = require("@google/generative-ai");
+const cors = require("cors")
 
-const app = express();
 app.use(bodyParser.json());
+app.use(cors())
+
+
+
 console.log("Loaded key:", process.env.GOOGLE_API_KEY ? "Yes ✅" : "No ❌");
 
 app.post("/getResponse", async (req, res) => {
